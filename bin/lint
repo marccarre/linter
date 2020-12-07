@@ -1,0 +1,77 @@
+#!/bin/sh
+
+# Description:
+#   Lint all-the-things.
+
+set -o errexit
+set -o nounset
+
+ensure_dependency() {
+	command -v "${1}" >/dev/null 2>&1 || {
+		echo >&2 "Please install ${1} before using this script. Exiting..."
+		return 1
+	}
+}
+
+ensure_dependencies() {
+	ensure_dependency checkmake
+	ensure_dependency hadolint
+	ensure_dependency markdownlint
+	ensure_dependency misspell
+	ensure_dependency shellcheck
+	ensure_dependency shfmt
+}
+
+find_files() {
+	find . -type f -not -path '*/\.git/*' "$@"
+}
+
+find_other_shellscripts() {
+	find_files -not -name '*.sh' | xargs -r file --mime-type | grep -oP '[^:]+(?=:\s+text/x-shellscript)'
+}
+
+lint() {
+	# Keep track of exit statuses, to either succeed or fail as a whole:
+	set +e
+	status=0
+
+	find_files -name 'Makefile' | xargs -r checkmake
+	status=$((status + $?))
+
+	find_files -name 'Dockerfile' | xargs -r hadolint
+	status=$((status + $?))
+
+	find_files -name '*.md' | xargs -r markdownlint
+	status=$((status + $?))
+
+	find_files | xargs -r misspell
+	status=$((status + $?))
+
+	for f in $(find_files -name '*.sh'); do
+		shellcheck "${f}"
+		status=$((status + $?))
+		shfmt -d "${f}"
+		status=$((status + $?))
+		shexec "${f}"
+		status=$((status + $?))
+	done
+
+	for f in $(find_other_shellscripts); do
+		shellcheck "${f}"
+		status=$((status + $?))
+		shfmt -d "${f}"
+		status=$((status + $?))
+		shexec "${f}"
+		status=$((status + $?))
+	done
+
+	set -e
+	return $status
+}
+
+main() {
+	ensure_dependencies
+	lint
+}
+
+main

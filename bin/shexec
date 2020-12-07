@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -x "${1}" ] || {
+	echo >&2 "Error: file [${1}] is not executable. Please run: chmod +x ${1}"
+	exit 1
+}

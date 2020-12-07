@@ -1,0 +1,7 @@
+.dockerignore
+.markdownlint.json
+Dockerfile
+Makefile
+README.md
+bin/revision
+img/
