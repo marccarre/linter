@@ -6,12 +6,13 @@ An unopinionated<sup>1</sup>, lightweight<sup>2</sup> Docker image to lint
 ![All-the-things meme](img/all-the-things.png)
 
 1. No specific style enforced, this can be configured in _your_ project.
-2. Well ~145 MB, because some linters need [node.js][node], which is ~100 MB.
-3. That is, things...
-    - common to most software projects
-    - not language-specific -- this is better done in either a language-specific
-      linter image, or directly in your project's build image, which typically
-      already has the targeted language's toolchain.
+2. Well, ~145 MB, because some linters need [node.js][node], which is ~100 MB.
+3. That is,
+    - things common to most software projects -- shell scripts, `Dockerfile`s,
+      `Makefile`s, `*.md` files, etc.
+    - things not language-specific -- this is better done in either a
+      language-specific linter image, or directly in your project's build image,
+      which typically already has the targeted language's toolchain.
 
 ## Supported linters
 
