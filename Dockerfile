@@ -47,9 +47,9 @@ RUN npm install -g markdownlint-cli@0.25.0
 COPY bin/shexec /bin/shexec
 
 ENV USER=linter
-ENV UID=1337
+ENV UID=10000
 ENV GROUP=linter
-ENV GID=1337
+ENV GID=10001
 RUN addgroup \
     --gid "${GID}" \
     "${GROUP}"
