@@ -25,7 +25,7 @@ FROM koalaman/shellcheck@sha256:5b4041726a39d79fc49b3ea345c23d4e261d324afb35337e
 FROM mvdan/shfmt:v3.2.1-alpine AS shfmt
 
 # ------------------------------------------------------------------ final image
-FROM node:15.3-alpine3.12
+FROM node:15.12-alpine3.13
 
 LABEL maintainer="Marc Carré <carre.marc@gmail.com>" \
     org.opencontainers.image.title="linter" \
@@ -35,8 +35,8 @@ LABEL maintainer="Marc Carré <carre.marc@gmail.com>" \
     org.opencontainers.image.vendor="Marc Carré <carre.marc@gmail.com>"
 
 RUN apk add --no-cache \
-    file=5.38-r0 \
-    grep=3.4-r0
+    file=5.39-r0 \
+    grep=3.6-r0
 
 COPY --from=checkmake  /bin/checkmake  /bin/checkmake
 COPY --from=hadolint   /bin/hadolint   /bin/hadolint
