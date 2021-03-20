@@ -35,6 +35,7 @@ LABEL maintainer="Marc Carré <carre.marc@gmail.com>" \
     org.opencontainers.image.vendor="Marc Carré <carre.marc@gmail.com>"
 
 RUN apk add --no-cache \
+    bash=5.1.0-r0 \
     file=5.39-r0 \
     grep=3.6-r0
 
