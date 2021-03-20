@@ -15,7 +15,7 @@ FROM hadolint/hadolint@sha256:72ac81641af77f4fdf6c4fe0b336071148fc6babfa83d57c72
 # --------------------------------------------------------------------- misspell
 FROM alpine:3.13 AS misspell
 RUN apk add --no-cache curl==7.74.0-r1 && \
-    curl -L -o ./install-misspell.sh https://git.io/misspell && \
+    curl -L -s -S -o ./install-misspell.sh https://git.io/misspell && \
     sh ./install-misspell.sh
 
 # ------------------------------------------------------------ shellcheck v0.7.1
