@@ -13,8 +13,8 @@ RUN git config --global user.name 'Marc Carré' && \
 FROM hadolint/hadolint@sha256:72ac81641af77f4fdf6c4fe0b336071148fc6babfa83d57c72569e71579b000f AS hadolint
 
 # --------------------------------------------------------------------- misspell
-FROM alpine:3.12 AS misspell
-RUN apk add --no-cache curl==7.69.1-r1 && \
+FROM alpine:3.13 AS misspell
+RUN apk add --no-cache curl==7.74.0-r1 && \
     curl -L -o ./install-misspell.sh https://git.io/misspell && \
     sh ./install-misspell.sh
 
