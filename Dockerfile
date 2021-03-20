@@ -9,8 +9,8 @@ RUN git config --global user.name 'Marc Carré' && \
     make test && \
     mv checkmake /bin/checkmake
 
-# ------------------------------------------------------------- hadolint v1.19.0
-FROM hadolint/hadolint@sha256:72ac81641af77f4fdf6c4fe0b336071148fc6babfa83d57c72569e71579b000f AS hadolint
+# ------------------------------------------- hadolint v1.23.0-8-gb01c5a9-alpine
+FROM hadolint/hadolint@sha256:f48a018d301140f92d949758f21b506ec3161b8d88c5aa289deb1816f23a15f2 AS hadolint
 
 # --------------------------------------------------------------------- misspell
 FROM alpine:3.13 AS misspell
