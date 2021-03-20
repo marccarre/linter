@@ -21,8 +21,8 @@ RUN apk add --no-cache curl==7.74.0-r1 && \
 # ------------------------------------------------------------ shellcheck v0.7.1
 FROM koalaman/shellcheck@sha256:5b4041726a39d79fc49b3ea345c23d4e261d324afb35337ed990d78d0b3f7e75 AS shellcheck
 
-# ----------------------------------------------------------------- shfmt v3.2.1
-FROM mvdan/shfmt:v3.2.1-alpine AS shfmt
+# ----------------------------------------------------------------- shfmt v3.2.4
+FROM mvdan/shfmt:v3.2.4-alpine AS shfmt
 
 # ------------------------------------------------------------------ final image
 FROM node:15.12-alpine3.13
