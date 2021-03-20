@@ -44,7 +44,7 @@ COPY --from=hadolint   /bin/hadolint   /bin/hadolint
 COPY --from=misspell   /bin/misspell   /bin/misspell
 COPY --from=shellcheck /bin/shellcheck /bin/shellcheck
 COPY --from=shfmt      /bin/shfmt      /bin/shfmt
-RUN npm install -g markdownlint-cli@0.25.0
+RUN npm install -g markdownlint-cli@0.27.1
 COPY bin/shexec /bin/shexec
 
 ENV USER=linter
