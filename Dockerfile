@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------- checkmake
-FROM golang:1.15 AS checkmake
+FROM golang:1.16 AS checkmake
 WORKDIR "${GOPATH}/src/github.com/mrtazz/"
 RUN git clone https://github.com/mrtazz/checkmake.git
 WORKDIR "${GOPATH}/src/github.com/mrtazz/checkmake/"
