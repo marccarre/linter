@@ -33,7 +33,7 @@ function find_other_shellscripts() {
 function lint() {
 	# Keep track of exit statuses, to either succeed or fail as a whole:
 	set +o errexit
-	failures=0
+	local failures=0
 	trap 'failures=$((failures+1))' ERR
 
 	find_files -name 'Makefile' | xargs -r checkmake
